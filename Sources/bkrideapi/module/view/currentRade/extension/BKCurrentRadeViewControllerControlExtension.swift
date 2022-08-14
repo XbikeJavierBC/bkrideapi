@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMaps
+
 import bksdkcore
 
 //MARK: Timer View
@@ -33,7 +35,9 @@ extension BKCurrentRadeViewController: BKTimerViewDelegate {
         
         self.mapsManaget?.addMyLocationMarket(
             coordinate: location.coordinate,
-            image: UIImage(named: "end_line_icon", find: .sdk)
+            image: GMSMarker.markerImage(
+                with: .green
+            )
         )
         
         self.mapsManaget?.getCurrentPlace(closure: { address in

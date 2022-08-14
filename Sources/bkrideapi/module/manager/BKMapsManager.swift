@@ -69,9 +69,8 @@ class BKMapsManager: NSObject {
             position: coordinate
         )
         myLocationMarker.title = title
-        myLocationMarker.icon = image ?? UIImage(
-            named: "start_line_icon",
-            find: .sdk
+        myLocationMarker.icon = image ?? GMSMarker.markerImage(
+            with: .oragenColor
         )
         myLocationMarker.map = self.myMapView
     }

@@ -41,18 +41,20 @@ extension BKDetailProgressViewController {
         self.addMyLocationMarket(
             coordinate: self.mutablePath.coordinate(at: 0),
             title: model.startAddress,
-            image: UIImage(
-                named: "start_line_icon",
-                find: .sdk
+            image: GMSMarker.markerImage(
+                with: .oragenColor
             )
         )
         
+        let coordinate = self.mutablePath.count() == 0
+                ? self.mutablePath.coordinate(at: 0)
+                : self.mutablePath.coordinate(at: self.mutablePath.count() - 1)
+        
         self.addMyLocationMarket(
-            coordinate: self.mutablePath.coordinate(at: self.mutablePath.count() - 1),
+            coordinate: coordinate,
             title: model.endAddress,
-            image: UIImage(
-                named: "end_line_icon",
-                find: .sdk
+            image: GMSMarker.markerImage(
+                with: .green
             )
         )
     }
