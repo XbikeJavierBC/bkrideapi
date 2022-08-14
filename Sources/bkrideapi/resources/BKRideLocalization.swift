@@ -10,6 +10,7 @@ import Foundation
 public enum BKRideLocalization: String {
     case noGeolocationAccess
     case currentRide
+    case myLocation
    
     public var localize: String {
         self.localizedString(

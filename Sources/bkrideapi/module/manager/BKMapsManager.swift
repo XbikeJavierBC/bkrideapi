@@ -64,7 +64,7 @@ class BKMapsManager: NSObject {
         self.getCurrentPlace(closure: closure)
     }
     
-    internal func addMyLocationMarket(coordinate: CLLocationCoordinate2D, title: String = "Mi ubicación") {
+    internal func addMyLocationMarket(coordinate: CLLocationCoordinate2D, title: String = BKRideLocalization.myLocation.localize) {
         let myLocationMarker = GMSMarker(
             position: coordinate
         )

@@ -8,3 +8,4 @@
 
 "noGeolocationAccess" = "You do not have permissions to obtain the geolocation of your device, check if you have your location service active and the permissions in the app.";
 "currentRide"   = "Current Ride";
+"myLocation"    = "My Location";

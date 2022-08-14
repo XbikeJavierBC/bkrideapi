@@ -8,3 +8,4 @@
 
 "noGeolocationAccess" = "No cuentas con permisos para obtener la geolocalización de tu dospositivo, comprueba si tienes tu servicio de ubicación activo y los permisos en el app.";
 "currentRide"   = "Paseo Actual";
+"myLocation"    = "Mi Ubicación";
