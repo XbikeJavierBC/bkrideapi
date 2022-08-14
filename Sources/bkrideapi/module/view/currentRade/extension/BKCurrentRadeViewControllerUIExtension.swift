@@ -22,6 +22,7 @@ extension BKCurrentRadeViewController {
         )
         
         self.setupMapManager()
+        self.setupTimerView()
     }
     
     func updateUI() {
@@ -30,6 +31,18 @@ extension BKCurrentRadeViewController {
             color: .white,
             font: .abelRegular20
         )
+    }
+    
+    func setupTimerView() {
+        let timerView = BKTimerView()
+        timerView.delegate = self
+        self.containerView.addSubview(timerView)
+        
+        timerView.width(260)
+        timerView.height(148)
+        
+        timerView.bottom(to: self.containerView, .none, offset: -24, relation: .equal, priority: .defaultHigh, isActive: true)
+        timerView.centerX(to: self.containerView)
     }
 }
 

@@ -11,6 +11,7 @@ public enum BKRideLocalization: String {
     case noGeolocationAccess
     case currentRide
     case myLocation
+    case myProgress
    
     public var localize: String {
         self.localizedString(

@@ -60,7 +60,7 @@ class BKMapsManager: NSObject {
     }
     
     func setDefaultSearchNearStores(coordinate: CLLocationCoordinate2D, closure: @escaping (String) -> ()) {
-        self.addMyLocationMarket(coordinate: coordinate)
+        //self.addMyLocationMarket(coordinate: coordinate)
         self.getCurrentPlace(closure: closure)
     }
     
@@ -69,13 +69,14 @@ class BKMapsManager: NSObject {
             position: coordinate
         )
         myLocationMarker.title = title
-        myLocationMarker.icon = GMSMarker.markerImage(
-            with: .oragenColor
+        myLocationMarker.icon = UIImage(
+            named: "start_line_icon",
+            find: .sdk
         )
         myLocationMarker.map = self.myMapView
     }
     
-    private func getCurrentPlace(closure: @escaping (String) -> ()) {
+    func getCurrentPlace(closure: @escaping (String) -> ()) {
         let placeFields: GMSPlaceField = [.name, .formattedAddress]
         
         self.placesClient?.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: placeFields) { [weak self] (placeLikelihoods, error) in

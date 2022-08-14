@@ -35,12 +35,18 @@ class BKCurrentRadeViewController: BKBaseViewController {
     internal var mapsManaget: BKMapsManager?
     internal var observation: NSKeyValueObservation?
     
+    internal lazy var mutablePath = GMSMutablePath()
+    
     //MARK: Properties
+    internal var rideViewModel: BKRideViewModelProtocol? {
+        return self.viewModel as? BKRideViewModelProtocol
+    }
+    
     internal lazy var myMapView: GMSMapView = {
         let camera = GMSCameraPosition(
             latitude: -33.868,
             longitude: 151.2086,
-            zoom: 14
+            zoom: 17
         )
         
         return GMSMapView(frame: .zero, camera: camera)
@@ -56,10 +62,40 @@ class BKCurrentRadeViewController: BKBaseViewController {
             
             self.mapsManaget?.setDefaultSearchNearStores(
                 coordinate: firstLocation.coordinate,
-                closure: { _ in }
+                closure: { address in
+                    self.rideViewModel?.startAddressLiveData.value = address
+                }
             )
         }
     }
+    
+    internal var trackLocation: CLLocation? {
+        didSet {
+            guard let firstLocation = self.trackLocation else { return }
+            
+            self.rideViewModel?.coordinateLiveData.value = firstLocation.coordinate
+        }
+    }
+    
+    internal lazy var yourTimeWasView: BKYourTimeWasView = {
+        let view = BKYourTimeWasView()
+        view.delegate = self
+        return view
+    }()
+    
+    internal lazy var simplePopUpView: BKSimplePopUpView = {
+        let view = BKSimplePopUpView()
+        view.delegate = self
+        return view
+    }()
+    
+    internal lazy var polyline: GMSPolyline = {
+        let polyline = GMSPolyline()
+        polyline.strokeWidth = 4
+        polyline.strokeColor = .oragenColor
+        
+        return polyline
+    }()
     
     //MARK: Life Cicle
     override func viewDidLoad() {
@@ -71,7 +107,13 @@ class BKCurrentRadeViewController: BKBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.setupBinds()
         self.updateUI()
+    }
+    
+    //MARK: Functions
+    override func rightNavButtonSelector() {
+        print("rightNavButtonSelector")
     }
     
     public override func removeReferenceContext() {

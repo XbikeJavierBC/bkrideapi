@@ -23,6 +23,10 @@ let package = Package(
             branch: "main"
         ),
         .package(
+            url: "https://github.com/XbikeJavierBC/bklocalrepositorycore.git",
+            branch: "main"
+        ),
+        .package(
             url: "https://github.com/YAtechnologies/GoogleMaps-SP.git",
                 .upToNextMinor(from: "6.0.0")
         ),
@@ -32,6 +36,7 @@ let package = Package(
             name: "bkrideapi",
             dependencies: [
                 "bksdkcore",
+                "bklocalrepositorycore",
                 .product(
                     name: "GoogleMaps",
                     package: "GoogleMaps-SP"

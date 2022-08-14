@@ -52,5 +52,36 @@
             </objects>
             <point key="canvasLocation" x="87" y="98"/>
         </scene>
+        <!--My Progress View Controller-->
+        <scene sceneID="AQQ-Ab-Hun">
+            <objects>
+                <viewController restorationIdentifier="BKMyProgressViewController" storyboardIdentifier="BKMyProgressViewController" id="0uA-J7-uCT" customClass="BKMyProgressViewController" customModule="bkrideapi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mfu-Od-LkH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydQ-d8-IUV" userLabel="containerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="chv-2J-3ts"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ydQ-d8-IUV" firstAttribute="leading" secondItem="chv-2J-3ts" secondAttribute="leading" id="1Pm-Yy-F4d"/>
+                            <constraint firstItem="chv-2J-3ts" firstAttribute="bottom" secondItem="ydQ-d8-IUV" secondAttribute="bottom" id="Hvg-2q-JYu"/>
+                            <constraint firstItem="chv-2J-3ts" firstAttribute="trailing" secondItem="ydQ-d8-IUV" secondAttribute="trailing" id="fGV-Tg-5Kd"/>
+                            <constraint firstItem="ydQ-d8-IUV" firstAttribute="top" secondItem="chv-2J-3ts" secondAttribute="top" id="uju-Qe-cFE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="ydQ-d8-IUV" id="fkc-xJ-H7u"/>
+                        <outlet property="rootView" destination="mfu-Od-LkH" id="hw6-mb-fAp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIE-lA-LnL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="97"/>
+        </scene>
     </scenes>
 </document>

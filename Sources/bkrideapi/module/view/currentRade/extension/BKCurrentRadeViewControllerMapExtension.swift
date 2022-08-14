@@ -25,10 +25,10 @@ extension BKCurrentRadeViewController: GMSMapViewDelegate {
         self.mapView.addSubview(self.myMapView)
         self.myMapView.edgesToSuperview()
         
-        // Listen to the myLocation property of GMSMapView.
         self.observation = self.myMapView.observe(\.myLocation, options: [.new]) { [weak self] map, _ in
             guard let self = self else { return }
             self.location = map.myLocation
+            self.trackLocation = map.myLocation
         }
     }
     
@@ -38,6 +38,22 @@ extension BKCurrentRadeViewController: GMSMapViewDelegate {
         )
         self.mapsManaget?.delegate = self
         self.mapsManaget?.requestLocationPermision()
+    }
+    
+    func drawPolyline(coordinate: CLLocationCoordinate2D) {
+        self.mutablePath.add(coordinate)
+        
+        self.polyline.path = self.mutablePath
+        
+        if self.polyline.map == nil {
+            self.polyline.map = self.myMapView
+        }
+    }
+    
+    func releasePolylineFromMap() {
+        self.polyline.map = nil
+        self.mutablePath.removeAllCoordinates()
+        self.myMapView.clear()
     }
 }
 
