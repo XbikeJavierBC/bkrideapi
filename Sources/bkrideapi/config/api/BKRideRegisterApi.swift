@@ -10,12 +10,12 @@ import bksdkcore
 
 public class BKRideRegisterApi: BKSdkApiManagerProtocol {
     public static var flows: [GHManagerModel] = {
-        let onBoardingType = BKApiFlow.onboarding
+        let currentRideType = BKApiFlow.currentRide
         
         return [
             GHManagerModelBuilder()
-                .withType(type: onBoardingType.rawValue)
-                .withDelegate(delegate: onBoardingType)
+                .withType(type: currentRideType.rawValue)
+                .withDelegate(delegate: currentRideType)
                 .withBundle(bundle: .module)
                 .build()
         ]

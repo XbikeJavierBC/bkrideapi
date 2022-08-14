@@ -8,7 +8,8 @@
 import Foundation
 
 public enum BKRideLocalization: String {
-    case extremelySimple
+    case noGeolocationAccess
+    case currentRide
    
     public var localize: String {
         self.localizedString(

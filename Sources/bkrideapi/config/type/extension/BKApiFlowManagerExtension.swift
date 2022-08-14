@@ -12,8 +12,8 @@ import bksdkcore
 extension BKApiFlow: GHManagerModelDelegate {
     public func getController() -> GHBaseViewControllerDelegate? {
         switch self {
-            case .onboarding:
-                return BKOnBoardingViewController.instantiate(
+            case .currentRide:
+                return BKCurrentRadeViewController.instantiate(
                     fromStoryboard: self.getStoryboard(),
                     bundle: .module
                 )
@@ -24,8 +24,8 @@ extension BKApiFlow: GHManagerModelDelegate {
     
     public func getViewModel() -> GHBaseViewModelProtocol? {
         switch self {
-            case .onboarding:
-                return BKOnBoardingViewModel()
+            case .currentRide:
+                return BKRideViewModel()
             default:
                 return nil
         }

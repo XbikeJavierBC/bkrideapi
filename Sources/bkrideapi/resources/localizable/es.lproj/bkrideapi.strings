@@ -6,4 +6,5 @@
   Copyright © 2020 GoNet. All rights reserved.
 */
 
-"extremelySimple"   = "Extremadamente simple de\nusar";
+"noGeolocationAccess" = "No cuentas con permisos para obtener la geolocalización de tu dospositivo, comprueba si tienes tu servicio de ubicación activo y los permisos en el app.";
+"currentRide"   = "Paseo Actual";

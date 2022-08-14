@@ -21,13 +21,25 @@ let package = Package(
         .package(
             url: "https://github.com/XbikeJavierBC/bksdkcore.git",
             branch: "main"
-        )
+        ),
+        .package(
+            url: "https://github.com/YAtechnologies/GoogleMaps-SP.git",
+                .upToNextMinor(from: "6.0.0")
+        ),
     ],
     targets: [
         .target(
             name: "bkrideapi",
             dependencies: [
-                "bksdkcore"
+                "bksdkcore",
+                .product(
+                    name: "GoogleMaps",
+                    package: "GoogleMaps-SP"
+                ),
+                .product(
+                    name: "GooglePlaces",
+                    package: "GoogleMaps-SP"
+                ),
             ],
             resources: [
                 .process("resources/localizable")
