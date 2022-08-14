@@ -10,8 +10,9 @@ import bksdkcore
 
 public class BKRideRegisterApi: BKSdkApiManagerProtocol {
     public static var flows: [GHManagerModel] = {
-        let currentRideType = BKApiFlow.currentRide
-        let myProgressType  = BKApiFlow.myProgress
+        let currentRideType     = BKApiFlow.currentRide
+        let myProgressType      = BKApiFlow.myProgress
+        let detailProgressType  = BKApiFlow.detailProgress
         
         return [
             GHManagerModelBuilder()
@@ -22,6 +23,11 @@ public class BKRideRegisterApi: BKSdkApiManagerProtocol {
             GHManagerModelBuilder()
                 .withType(type: myProgressType.rawValue)
                 .withDelegate(delegate: myProgressType)
+                .withBundle(bundle: .module)
+                .build(),
+            GHManagerModelBuilder()
+                .withType(type: detailProgressType.rawValue)
+                .withDelegate(delegate: detailProgressType)
                 .withBundle(bundle: .module)
                 .build()
         ]

@@ -54,7 +54,13 @@ public class BKRideViewModel: BKRideViewModelProtocol {
             time: time,
             distance: distance,
             startAddress: starAddress,
-            endAddress: endAddress
+            endAddress: endAddress,
+            coordinateList: self.coordinateListLiveData.value.map {
+                BKCoordinateModel(
+                    latitude: $0.latitude,
+                    longitude: $0.longitude
+                )
+            }
         )
         
         self.subscriber = try? BKRXRideLocalRepository.save(model: model)?

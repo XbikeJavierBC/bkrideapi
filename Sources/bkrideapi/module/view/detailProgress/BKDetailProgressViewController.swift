@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
-import ghmjolnircore
 import bksdkcore
 
-class BKMyProgressViewController: BKBaseViewController {
-    //MARK: IBOutlets
+class BKDetailProgressViewController: BKBaseViewController {
     @IBOutlet var rootView: UIView! {
         didSet {
             rootView.backgroundColor = .oragenColor
@@ -24,25 +24,29 @@ class BKMyProgressViewController: BKBaseViewController {
         }
     }
     
-    //MARK: Properties
-    internal var rideViewModel: BKRideViewModelProtocol? {
-        return self.viewModel as? BKRideViewModelProtocol
-    }
+    internal lazy var mutablePath = GMSMutablePath()
     
-    internal lazy var strategyList = GHStrategyTableController(
-        nibList: [("BKMyProgressTableViewCell", .module)]
-    )
-    
-    internal lazy var emptyProgressView: BKEmptyProgressView = {
-        let view = BKEmptyProgressView()
-        return view
+    internal lazy var myMapView: GMSMapView = {
+        let camera = GMSCameraPosition(
+            latitude: -33.868,
+            longitude: 151.2086,
+            zoom: 17
+        )
+        
+        return GMSMapView(frame: .zero, camera: camera)
     }()
     
-    //MARK: Life Cicle
+    internal lazy var polyline: GMSPolyline = {
+        let polyline = GMSPolyline()
+        polyline.strokeWidth = 4
+        polyline.strokeColor = .oragenColor
+        
+        return polyline
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupBinds()
         self.setupUI()
     }
     
@@ -50,6 +54,5 @@ class BKMyProgressViewController: BKBaseViewController {
         super.viewWillAppear(animated)
         
         self.updateUI()
-        self.rideViewModel?.fetchRideDataList()
     }
 }

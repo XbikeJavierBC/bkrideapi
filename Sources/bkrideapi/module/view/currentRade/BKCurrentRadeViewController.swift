@@ -73,6 +73,10 @@ class BKCurrentRadeViewController: BKBaseViewController {
         didSet {
             guard let firstLocation = self.trackLocation else { return }
             
+            if oldValue != nil && (oldValue!.coordinate.latitude == firstLocation.coordinate.latitude && oldValue!.coordinate.longitude == firstLocation.coordinate.longitude) {
+                return
+            }
+            
             self.rideViewModel?.coordinateLiveData.value = firstLocation.coordinate
         }
     }
@@ -97,6 +101,8 @@ class BKCurrentRadeViewController: BKBaseViewController {
         return polyline
     }()
     
+    internal var timerView: BKTimerView?
+    
     //MARK: Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +119,7 @@ class BKCurrentRadeViewController: BKBaseViewController {
     
     //MARK: Functions
     override func rightNavButtonSelector() {
-        print("rightNavButtonSelector")
+        self.setupTimerView()
     }
     
     public override func removeReferenceContext() {

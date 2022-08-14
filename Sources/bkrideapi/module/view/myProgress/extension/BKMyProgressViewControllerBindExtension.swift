@@ -25,11 +25,22 @@ extension BKMyProgressViewController {
         self.rideViewModel?.rideModelLiveData.bind { [weak self] list in
             guard let self = self, let list = list else { return }
             
-            self.strategyList.setSource(listSource: list)
-            
-            if !self.strategyList.tableView.isDescendant(of: self.containerView) {
-                self.containerView.addSubview(self.strategyList.tableView)
-                self.strategyList.tableView.edgesToSuperview()
+            if list.isEmpty {
+                self.containerView.addSubview(self.emptyProgressView)
+                self.emptyProgressView.edgesToSuperview()
+            }
+            else {
+                if self.emptyProgressView.isDescendant(of: self.containerView) {
+                    self.emptyProgressView.removeFromSuperview()
+                }
+                
+                self.strategyList.setSource(listSource: list)
+                
+                if !self.strategyList.tableView.isDescendant(of: self.containerView) {
+                    self.containerView.addSubview(self.strategyList.tableView)
+                    self.strategyList.tableView.edgesToSuperview()
+                    self.strategyList.delegate = self
+                }
             }
         }
     }

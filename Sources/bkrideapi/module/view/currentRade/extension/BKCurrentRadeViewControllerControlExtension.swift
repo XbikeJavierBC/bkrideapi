@@ -32,7 +32,8 @@ extension BKCurrentRadeViewController: BKTimerViewDelegate {
         self.rideViewModel?.trackRouteLiveData.value = false
         
         self.mapsManaget?.addMyLocationMarket(
-            coordinate: location.coordinate
+            coordinate: location.coordinate,
+            image: UIImage(named: "end_line_icon", find: .sdk)
         )
         
         self.mapsManaget?.getCurrentPlace(closure: { address in
@@ -63,7 +64,7 @@ extension BKCurrentRadeViewController: BKYourTimeWasViewDelegate {
     
     func didDeleteSelect(view: BKYourTimeWasView) {
         view.hide()
-        self.setupTimerView()
+        self.releaseTimerView()
         
         self.releasePolylineFromMap()
     }
@@ -73,7 +74,7 @@ extension BKCurrentRadeViewController: BKSimplePopUpViewDelegate {
     func didAceptSelect(view: BKSimplePopUpView) {
         view.hide()
         
-        self.setupTimerView()
+        self.releaseTimerView()
         self.releasePolylineFromMap()
     }
 }

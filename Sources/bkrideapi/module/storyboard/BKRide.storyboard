@@ -83,5 +83,36 @@
             </objects>
             <point key="canvasLocation" x="863" y="97"/>
         </scene>
+        <!--Detail Progress View Controller-->
+        <scene sceneID="wCg-Jj-g4T">
+            <objects>
+                <viewController restorationIdentifier="BKDetailProgressViewController" storyboardIdentifier="BKDetailProgressViewController" id="g74-0e-ku8" customClass="BKDetailProgressViewController" customModule="bkrideapi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gvv-zS-jVC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnA-kp-unS" userLabel="containerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iYU-Ix-46b"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iYU-Ix-46b" firstAttribute="trailing" secondItem="pnA-kp-unS" secondAttribute="trailing" id="5VP-cO-Lh4"/>
+                            <constraint firstItem="iYU-Ix-46b" firstAttribute="bottom" secondItem="pnA-kp-unS" secondAttribute="bottom" id="iep-01-OPp"/>
+                            <constraint firstItem="pnA-kp-unS" firstAttribute="leading" secondItem="iYU-Ix-46b" secondAttribute="leading" id="prO-yG-jnp"/>
+                            <constraint firstItem="pnA-kp-unS" firstAttribute="top" secondItem="iYU-Ix-46b" secondAttribute="top" id="rAU-Ha-ktu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="pnA-kp-unS" id="lbn-EF-OMw"/>
+                        <outlet property="rootView" destination="gvv-zS-jVC" id="Z3f-Ah-59L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2kl-4A-Dsi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1631" y="96"/>
+        </scene>
     </scenes>
 </document>

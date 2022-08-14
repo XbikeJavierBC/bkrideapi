@@ -22,6 +22,11 @@ extension BKApiFlow: GHManagerModelDelegate {
                     fromStoryboard: self.getStoryboard(),
                     bundle: .module
                 )
+            case .detailProgress:
+                return BKDetailProgressViewController.instantiate(
+                    fromStoryboard: self.getStoryboard(),
+                    bundle: .module
+                )
             default:
                 return nil
         }
@@ -29,7 +34,7 @@ extension BKApiFlow: GHManagerModelDelegate {
     
     public func getViewModel() -> GHBaseViewModelProtocol? {
         switch self {
-        case .currentRide, .myProgress:
+        case .currentRide, .myProgress, .detailProgress:
                 return BKRideViewModel()
             default:
                 return nil

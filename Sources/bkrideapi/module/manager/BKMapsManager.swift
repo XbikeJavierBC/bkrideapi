@@ -64,12 +64,12 @@ class BKMapsManager: NSObject {
         self.getCurrentPlace(closure: closure)
     }
     
-    internal func addMyLocationMarket(coordinate: CLLocationCoordinate2D, title: String = BKRideLocalization.myLocation.localize) {
+    internal func addMyLocationMarket(coordinate: CLLocationCoordinate2D, title: String = BKRideLocalization.myLocation.localize, image: UIImage? = nil) {
         let myLocationMarker = GMSMarker(
             position: coordinate
         )
         myLocationMarker.title = title
-        myLocationMarker.icon = UIImage(
+        myLocationMarker.icon = image ?? UIImage(
             named: "start_line_icon",
             find: .sdk
         )
